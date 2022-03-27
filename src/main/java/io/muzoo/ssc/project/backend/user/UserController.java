@@ -4,10 +4,13 @@ import io.muzoo.ssc.project.backend.SimpleResponseDTO;
 import io.muzoo.ssc.project.backend.repo.User;
 import io.muzoo.ssc.project.backend.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
@@ -50,31 +53,33 @@ public class UserController {
     }
 
     @Transactional
-    @PostMapping("/api/delete")
+    @GetMapping("/api/delete")
     public SimpleResponseDTO delete(HttpServletRequest request) {
-        String username = request.getParameter("username");
-        User user = userRepository.findFirstByUsername(username);
-        if (user == null) {
-            return SimpleResponseDTO
-                    .builder()
-                    .success(false)
-                    .message(String.format("Can't delete, username %s not found", username))
-                    .build();
-        } else {
-            int count = userRepository.deleteByUsername(username);
-            if (count > 0) {
+        try {
+            // Check if there is a current user logged in, if so log that user out first
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (principal != null && principal instanceof org.springframework.security.core.userdetails.User) {
+                request.logout();
+                String username = ((org.springframework.security.core.userdetails.User) principal).getUsername();
+                userRepository.deleteByUsername(username);
                 return SimpleResponseDTO
                         .builder()
                         .success(true)
-                        .message(String.format("Successfully delete user %s", username))
+                        .message(String.format("User %s is successfully deleted.", username))
                         .build();
             } else {
                 return SimpleResponseDTO
                         .builder()
                         .success(false)
-                        .message(String.format("Failed delete user %s", username))
+                        .message("Can't delete user, you are not logged in.")
                         .build();
             }
+        } catch (ServletException e) {
+            return SimpleResponseDTO
+                    .builder()
+                    .success(false)
+                    .message("Failed to delete user.")
+                    .build();
         }
     }
 
