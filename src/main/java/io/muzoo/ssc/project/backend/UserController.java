@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @Transactional
-    @DeleteMapping("/api/delete")
+    @PostMapping("/api/delete")
     public SimpleResponseDTO delete(HttpServletRequest request) {
         String username = request.getParameter("username");
         User user = userRepository.findFirstByUsername(username);
@@ -78,7 +78,7 @@ public class UserController {
     }
 
     @Transactional
-    @PutMapping("/api/update")
+    @PostMapping("/api/update")
     public SimpleResponseDTO update(HttpServletRequest request) {
         String username = request.getParameter("username");
         float timestamp = Float.parseFloat(request.getParameter("timestamp"));
