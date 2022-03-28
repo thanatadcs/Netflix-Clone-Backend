@@ -48,7 +48,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample1 = new Video();
             sample1.setFilename("sample1");
             sample1.setTitle("AV (Animal Video)");
-            sample1.setLink("http://localhost:8082/hls/sample1.mp4/index.m3u8");
+            sample1.setLink("http://157.245.155.41:8082/hls/sample1.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sample1.setThumbnail("https://i.imgur.com/XJRowdx.png");
             videoRepository.save(sample1);
         }
@@ -57,7 +57,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample2 = new Video();
             sample2.setFilename("sample2");
             sample2.setTitle("Ocean");
-            sample2.setLink("http://localhost:8082/hls/sample2.mp4/index.m3u8");
+            sample2.setLink("http://157.245.155.41:8082/hls/sample2.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sample2.setThumbnail("https://i.imgur.com/ucKWSha.jpeg");
             videoRepository.save(sample2);
         }
