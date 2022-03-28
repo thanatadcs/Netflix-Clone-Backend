@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     int deleteByUsername(String username);
 
-    @Modifying
-    @Query("UPDATE User SET timestamp = :timestamp where username = :username")
-    int updateTimestampByUsername(@Param(value = "username") String username, @Param(value = "timestamp") float timestamp);
+//    @Modifying
+//    @Query("UPDATE User SET timestamp = :timestamp where username = :username")
+//    int updateTimestampByUsername(@Param(value = "username") String username, @Param(value = "timestamp") float timestamp);
 }

@@ -36,7 +36,7 @@ public class UserController {
             user.setUsername(username);
             user.setPassword(passwordEncoder.encode(password));
             user.setRole("USER");
-            user.setTimestamp(0);
+//            user.setTimestamp(0);
             userRepository.save(user);
             return SimpleResponseDTO
                     .builder()
@@ -82,36 +82,4 @@ public class UserController {
                     .build();
         }
     }
-
-    @Transactional
-    @PostMapping("/api/update")
-    public SimpleResponseDTO update(HttpServletRequest request) {
-        String username = request.getParameter("username");
-        float timestamp = Float.parseFloat(request.getParameter("timestamp"));
-
-        User user = userRepository.findFirstByUsername(username);
-        if (user == null) {
-            return SimpleResponseDTO
-                    .builder()
-                    .success(false)
-                    .message(String.format("Can't update username %s not found", username))
-                    .build();
-        } else {
-            int count = userRepository.updateTimestampByUsername(username, timestamp);
-            if (count > 0) {
-                return SimpleResponseDTO
-                        .builder()
-                        .success(true)
-                        .message(String.format("Successfully update timestamp of %s", username))
-                        .build();
-            } else {
-                return SimpleResponseDTO
-                        .builder()
-                        .success(false)
-                        .message(String.format("Failed update timestamp of %s", username))
-                        .build();
-            }
-        }
-    }
-
 }

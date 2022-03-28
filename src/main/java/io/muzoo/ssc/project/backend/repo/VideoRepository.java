@@ -13,5 +13,7 @@ public interface VideoRepository extends JpaRepository<Video, Long> {
 
     Video findFirstByFilename(String filename);
 
+    Video findFirstById(long id);
+
     List<Video> findAll();
 }
