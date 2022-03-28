@@ -28,19 +28,22 @@ public class TimestampController {
     @Transactional
     @PostMapping("/api/timestamp/update")
     public SimpleResponseDTO update(HttpServletRequest request) {
-        long videoId = Long.parseLong(request.getParameter("videoId"));
+        String filename = request.getParameter("filename");
         float updatedTimestamp = Float.parseFloat(request.getParameter("timestamp"));
+
+        // Find video
+        Video video = videoRepository.findFirstByFilename(filename);
 
         // Get user information
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((org.springframework.security.core.userdetails.User) principal).getUsername();
         User user = userRepository.findFirstByUsername(username);
 
-        Timestamp timestamp = timestampRepository.findFirstByUser_IdAndVideo_Id(user.getId(), videoId);
-        Video video = videoRepository.findFirstById(videoId);
+        // Find existing timestamp
+        Timestamp timestamp = timestampRepository.findFirstByUser_IdAndVideo_Id(user.getId(), video.getId());
 
         // Check if timestamp already exists
-        if (timestamp == null && user != null && video != null) {
+        if (timestamp == null) {
                 timestamp = new Timestamp();
                 timestamp.setUser(user);
                 timestamp.setVideo(video);
@@ -53,25 +56,31 @@ public class TimestampController {
                                 updatedTimestamp, user.getUsername(), video.getFilename()))
                         .build();
         } else {
+            timestampRepository.updateTimestampByUser_IdAndVideo_Id(user.getId(), video.getId(), updatedTimestamp);
             return SimpleResponseDTO
                     .builder()
-                    .success(false)
-                    .message("Failed to update timestamp")
+                    .success(true)
+                    .message(String.format("Updated timestamp to be %f successfully for user %s and video %s",
+                            updatedTimestamp, user.getUsername(), video.getFilename()))
                     .build();
         }
     }
 
     @PostMapping("/api/timestamp/get")
     public TimestampDTO get(HttpServletRequest request) {
-        long videoId = Long.parseLong(request.getParameter("videoId"));
+        String filename = request.getParameter("filename");
+
+        // Find video
+        Video video = videoRepository.findFirstByFilename(filename);
 
         // Get user information
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((org.springframework.security.core.userdetails.User) principal).getUsername();
         User user = userRepository.findFirstByUsername(username);
 
-        Timestamp timestamp = timestampRepository.findFirstByUser_IdAndVideo_Id(user.getId(), videoId);
-        Video video = videoRepository.findFirstById(videoId);
+        // Find existing timestamp
+        Timestamp timestamp = timestampRepository.findFirstByUser_IdAndVideo_Id(user.getId(), video.getId());
+
         // Create time stamp if not exists
         if (timestamp == null) {
             timestamp = new Timestamp();
@@ -84,15 +93,10 @@ public class TimestampController {
                     .timestamp(0)
                     .build();
         // If timestamp exists
-        } else if (user != null && video != null){
+        } else {
             return TimestampDTO.builder()
                     .success(true)
                     .timestamp(timestamp.getTimestamp())
-                    .build();
-        } else {
-            return TimestampDTO.builder()
-                    .success(false)
-                    .timestamp(0)
                     .build();
         }
     }
