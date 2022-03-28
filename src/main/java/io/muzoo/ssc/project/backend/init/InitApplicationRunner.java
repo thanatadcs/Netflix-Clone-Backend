@@ -61,5 +61,14 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample2.setThumbnail("https://i.imgur.com/ucKWSha.jpeg");
             videoRepository.save(sample2);
         }
+        Video sao_ep1 = videoRepository.findFirstByFilename("SAO_ep1");
+        if (sao_ep1 == null) {
+            sao_ep1 = new Video();
+            sao_ep1.setFilename("SAO_ep1");
+            sao_ep1.setTitle("SAO_ep1");
+            sao_ep1.setLink("http://157.245.155.41:8082/hls/SAO-ep1.mp4/index.m3u8"); // This link will work without installing nginx-vod
+            sao_ep1.setThumbnail("https://imgur.com/a/iptqb9U");
+            videoRepository.save(sao_ep1);
+        }
     }
 }
