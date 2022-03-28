@@ -1,0 +1,23 @@
+# ssc-y21t2-backend-team-f
+ssc-y21t2-backend-team-f created by GitHub Classroom
+# Start up configuration
+Application configuration: src/main/resources/application.properties
+
+To start the application, you just have to have to configure this three lines
+spring.datasource.url=jdbc:mariadb://localhost:<port>/<database name>
+spring.datasource.username=<Your username>
+spring.datasource.password=<Your password>
+  
+By default this will connect to mariadb on localhost:13306 on 'login_webapp' database
+"spring.datasource.url=jdbc:mariadb://localhost:13306/login_webapp"
+And you only need to have a blank database named 'login_webapp' or whatever you choose for
+the <database name> in order to run the application, the code will create and populate the table
+for you.
+  
+As for the data that will be initially populated, you can find that in the class
+src/main/java/io/muzoo/ssc/project/backend/init/InitApplicationRunner.java
+Notice that the link for sample videos are "http://157.245.155.41:8082/hls/sample1.mp4/index.m3u8"
+which can be access immediately without installing nginx-vod (It the video hosted on my website).
+If you got you own nginx-vod, just change this link, but feel free to continue using the link there
+or even request me to add more video to the server (since I already configured it so this is for the convenience
+of testing).
