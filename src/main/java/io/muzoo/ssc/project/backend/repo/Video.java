@@ -21,5 +21,7 @@ public class Video {
     @Column(unique = true)
     private String link;
 
+    private String thumbnail;
+
     private String title;
 }

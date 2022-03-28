@@ -49,6 +49,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample1.setFilename("sample1");
             sample1.setTitle("AV (Animal Video)");
             sample1.setLink("http://localhost:8082/hls/sample1.mp4/index.m3u8");
+            sample1.setThumbnail("https://i.imgur.com/XJRowdx.png");
             videoRepository.save(sample1);
         }
         Video sample2 = videoRepository.findFirstByFilename("sample2");
@@ -57,6 +58,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample2.setFilename("sample2");
             sample2.setTitle("Ocean");
             sample2.setLink("http://localhost:8082/hls/sample2.mp4/index.m3u8");
+            sample2.setThumbnail("https://i.imgur.com/ucKWSha.jpeg");
             videoRepository.save(sample2);
         }
     }
