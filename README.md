@@ -9,7 +9,10 @@ spring.datasource.username=\<Your username\> <br>
 spring.datasource.password=\<Your password\> <br>
   
 By default this will connect to mariadb on localhost:13306 on 'login_webapp' database
-"spring.datasource.url=jdbc:mariadb://localhost:13306/login_webapp"
+with the following configuration
+
+spring.datasource.url=jdbc:mariadb://localhost:13306/login_webapp
+
 And you only need to have a blank database named 'login_webapp' or whatever you choose for
 the \<database name\> in order to run the application, the code will create and populate the table
 for you.
