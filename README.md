@@ -29,3 +29,10 @@ which can be access immediately without installing nginx-vod (It the video hoste
 If you got you own nginx-vod, just change this link, but feel free to continue using the link there
 or even request me to add more video to the server (since I already configured it so this is for the convenience
 of testing).
+
+If you have downloaded and runs lower version of this code the sample video link might still be
+
+http://localhost:8082/hls/sample1.mp4/index.m3u8
+
+which required to set up nginx-vod on the same port and have same video name as mine. If you wish to use the video link from my server, you can simply run sql query on mariadb to change the link to
+the video link from my server. An even easier way to update is to just drop the tbl_video table and the rerun the code, the new table will be created and populated for you.
