@@ -26,8 +26,8 @@ public class TimestampController {
     private TimestampRepository timestampRepository;
 
     @Transactional
-    @PostMapping("/api/timestamp")
-    public SimpleResponseDTO create(HttpServletRequest request) {
+    @PostMapping("/api/timestamp/update")
+    public SimpleResponseDTO update(HttpServletRequest request) {
         long videoId = Long.parseLong(request.getParameter("videoId"));
         float updatedTimestamp = Float.parseFloat(request.getParameter("timestamp"));
 
@@ -57,6 +57,42 @@ public class TimestampController {
                     .builder()
                     .success(false)
                     .message("Failed to update timestamp")
+                    .build();
+        }
+    }
+
+    @PostMapping("/api/timestamp/get")
+    public TimestampDTO get(HttpServletRequest request) {
+        long videoId = Long.parseLong(request.getParameter("videoId"));
+
+        // Get user information
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((org.springframework.security.core.userdetails.User) principal).getUsername();
+        User user = userRepository.findFirstByUsername(username);
+
+        Timestamp timestamp = timestampRepository.findFirstByUser_IdAndVideo_Id(user.getId(), videoId);
+        Video video = videoRepository.findFirstById(videoId);
+        // Create time stamp if not exists
+        if (timestamp == null) {
+            timestamp = new Timestamp();
+            timestamp.setUser(user);
+            timestamp.setVideo(video);
+            timestamp.setTimestamp(0);
+            timestampRepository.save(timestamp);
+            return TimestampDTO.builder()
+                    .success(true)
+                    .timestamp(0)
+                    .build();
+        // If timestamp exists
+        } else if (user != null && video != null){
+            return TimestampDTO.builder()
+                    .success(true)
+                    .timestamp(timestamp.getTimestamp())
+                    .build();
+        } else {
+            return TimestampDTO.builder()
+                    .success(false)
+                    .timestamp(0)
                     .build();
         }
     }
