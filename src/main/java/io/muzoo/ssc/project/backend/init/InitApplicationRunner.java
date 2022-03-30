@@ -1,9 +1,6 @@
 package io.muzoo.ssc.project.backend.init;
 
-import io.muzoo.ssc.project.backend.repo.User;
-import io.muzoo.ssc.project.backend.repo.UserRepository;
-import io.muzoo.ssc.project.backend.repo.Video;
-import io.muzoo.ssc.project.backend.repo.VideoRepository;
+import io.muzoo.ssc.project.backend.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -21,6 +18,9 @@ public class InitApplicationRunner implements ApplicationRunner {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -84,6 +84,15 @@ public class InitApplicationRunner implements ApplicationRunner {
         else if (sao_ep1.getDescription() == null) {
             sao_ep1.setDescription("Sword Art Online... I didnt watch any episode yet...");
             videoRepository.save(sao_ep1);
+        }
+        Comment sample1_comment = commentRepository.findFirstByVideo_IdAndUser_IdAndTimestamp(1, 1, 0);
+        if(sample1_comment == null){
+            sample1_comment = new Comment();
+            sample1_comment.setVideo(videoRepository.findFirstByFilename("sample1"));
+            sample1_comment.setUser(userRepository.findFirstByUsername("admin"));
+            sample1_comment.setTimestamp(0);
+            sample1_comment.setComment("First comment");
+            commentRepository.save(sample1_comment);
         }
     }
 }

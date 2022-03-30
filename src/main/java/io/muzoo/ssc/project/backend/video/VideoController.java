@@ -20,8 +20,6 @@ public class VideoController {
     public List<VideoDTO> create(HttpServletRequest request) {
         List<Video> videos =  videoRepository.findAll();
         List<VideoDTO> videosDTO = new ArrayList<VideoDTO>();
-        // We are using videoDTO instead because, video got Set<Timestamp> which got mapped to user,
-        // this creates error when trying to send the entity Video
         for (Video video: videos) {
             videosDTO.add(VideoDTO.builder()
                     .id(video.getId())

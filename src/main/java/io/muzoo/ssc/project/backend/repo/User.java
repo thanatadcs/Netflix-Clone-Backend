@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,4 +26,8 @@ public class User {
 
     @OneToMany(mappedBy = "video")
     Set<Timestamp> timestamps;
+
+    @OneToMany(mappedBy = "video")
+    List<Comment> comments;
+
 }
