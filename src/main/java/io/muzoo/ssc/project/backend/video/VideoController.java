@@ -29,6 +29,7 @@ public class VideoController {
                     .link(video.getLink())
                     .thumbnail(video.getThumbnail())
                     .title(video.getTitle())
+                    .description(video.getDescription())
                     .build()
             );
         }
