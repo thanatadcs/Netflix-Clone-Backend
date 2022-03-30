@@ -24,7 +24,7 @@ public class Comment {
     @JoinColumn(name = "user_id")
     User user;
 
-    private float time_stamp;
+    private float timestamp;
 
     private String comment;
 }

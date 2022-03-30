@@ -21,15 +21,15 @@ public class CommentController {
     @Autowired
     private CommentRepository commentRepository;
 
-    @GetMapping("/api/videos")
+    @GetMapping("/api/videos/comment")
     public List<CommentDTO> create(HttpServletRequest request, @RequestParam long video_id) {
-        List<Comment> comments =  commentRepository.findAllByVideoId(video_id);
+        List<Comment> comments =  commentRepository.findAllByVideo_Id(video_id);
         List<CommentDTO> commentsDTO = new ArrayList<CommentDTO>();
         for (Comment comment: comments) {
             commentsDTO.add(CommentDTO.builder()
                     .id(comment.getId())
                     .username(comment.getUser().getUsername())
-                    .time_stamp(comment.getTime_stamp())
+                    .timestamp(comment.getTimestamp())
                     .comment(comment.getComment())
                     .build()
             );

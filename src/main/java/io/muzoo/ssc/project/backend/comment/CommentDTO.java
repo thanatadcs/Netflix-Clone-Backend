@@ -18,7 +18,7 @@ public class CommentDTO {
 
     private String username;
 
-    private float time_stamp;
+    private float timestamp;
 
     private String comment;
 }
