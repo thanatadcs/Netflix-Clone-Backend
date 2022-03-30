@@ -20,4 +20,6 @@ public class VideoDTO {
     private String thumbnail;
 
     private String title;
+
+    private String description;
 }

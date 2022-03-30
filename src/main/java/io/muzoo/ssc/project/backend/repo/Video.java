@@ -26,6 +26,8 @@ public class Video {
 
     private String title;
 
+    private String description;
+
     @OneToMany(mappedBy = "user")
     Set<Timestamp> timestamps;
 }
