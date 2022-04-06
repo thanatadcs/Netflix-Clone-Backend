@@ -7,6 +7,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class InitApplicationRunner implements ApplicationRunner {
 
@@ -78,6 +81,21 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample1_comment.setTimestamp(0);
             sample1_comment.setComment("First comment");
             commentRepository.save(sample1_comment);
+        }
+        if (admin == null) {
+            admin = new User();
+            admin.setUsername("admin");
+            admin.setPassword(passwordEncoder.encode("123456"));
+            admin.setRole("USER");
+            List<String> vidList = new ArrayList<>();
+            vidList.add("1");
+            admin.setMylistvideo(vidList);
+            userRepository.save(admin);
+        } else{
+            List<String> vidList = new ArrayList<>();
+            vidList.add("1");
+            admin.setMylistvideo(vidList);
+            userRepository.save(admin);
         }
     }
 }
