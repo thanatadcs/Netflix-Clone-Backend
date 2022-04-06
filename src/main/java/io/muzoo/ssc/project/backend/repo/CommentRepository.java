@@ -14,4 +14,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     Comment findFirstByVideo_IdAndUser_IdAndTimestamp(long video_id, long user_id,
                                                 float time_stamp);
 
+
 }
