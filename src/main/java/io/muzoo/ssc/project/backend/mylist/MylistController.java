@@ -26,8 +26,9 @@ public class MylistController {
 
     @GetMapping("/api/videos/mylist")
     public MylistDTO create(HttpServletRequest request) {
-        long userId = Long.parseLong(request.getParameter("userId"));
-        User user =  userRepository.findFirstById(userId);
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((org.springframework.security.core.userdetails.User) principal).getUsername();
+        User user = userRepository.findFirstByUsername(username);
         List<VideoDTO> videoList = new ArrayList<>();
         for(String vidId : user.getMylistvideo()){
             Video video = videoRepository.findFirstById(Long.parseLong(vidId));
@@ -57,7 +58,17 @@ public class MylistController {
         }
 
         // Set mylist and return response
-        videoIdList.add(String.valueOf(videoId));
+        if(!videoIdList.contains(String.valueOf(videoId))){
+            videoIdList.add(String.valueOf(videoId));
+        }
+        else{
+            return SimpleResponseDTO
+                    .builder()
+                    .success(false)
+                    .message(String.format("Cannot add video id %s for user %s. It already exist in the playlist",
+                            videoId, user.getUsername()))
+                    .build();
+        }
         user.setMylistvideo(videoIdList);
         return SimpleResponseDTO
                 .builder()
@@ -83,10 +94,17 @@ public class MylistController {
                     .builder()
                     .success(false)
                     .message(String.format("Cannot remove video id %s for user %s. User has empty list",
-                            videoIdList, user.getUsername()))
+                            videoId, user.getUsername()))
                     .build();
         }
-
+        else if(!videoIdList.contains(String.valueOf(videoId))){
+            return SimpleResponseDTO
+                    .builder()
+                    .success(false)
+                    .message(String.format("Cannot remove video id %s for user %s. User don't have the video in the playlist",
+                            videoId, user.getUsername()))
+                    .build();
+        }
 
         // Set mylist and return response
         videoIdList.remove(String.valueOf(videoId));
@@ -94,8 +112,8 @@ public class MylistController {
         return SimpleResponseDTO
                 .builder()
                 .success(true)
-                .message(String.format("Added video id %s into video list successfully for user %s",
-                        videoIdList, user.getUsername()))
+                .message(String.format("Removed video id %s into video list successfully for user %s",
+                        videoId, user.getUsername()))
                 .build();
     }
 
