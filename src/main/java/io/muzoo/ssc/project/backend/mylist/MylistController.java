@@ -63,7 +63,7 @@ public class MylistController {
                 .builder()
                 .success(true)
                 .message(String.format("Added video id %s into video list successfully for user %s",
-                        videoIdList, user.getUsername()))
+                        videoId, user.getUsername()))
                 .build();
     }
 
