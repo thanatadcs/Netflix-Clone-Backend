@@ -30,4 +30,7 @@ public class User {
     @OneToMany(mappedBy = "video")
     List<Comment> comments;
 
+    @ElementCollection
+    private List<String> mylistvideo;
+
 }
