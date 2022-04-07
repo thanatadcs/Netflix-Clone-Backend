@@ -23,7 +23,7 @@ public class VideoDTO {
 
     private String description;
 
-    private List<String> tags;
+    private String tags;
 
     private String title;
 }

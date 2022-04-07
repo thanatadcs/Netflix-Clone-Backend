@@ -55,9 +55,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample1.setLink("http://157.245.155.41:8082/hls/sample1.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sample1.setThumbnail("https://i.imgur.com/XJRowdx.png");
             sample1.setDescription("Short b-roll footage of animals in thier natural habitat");
-            List<String> tags = new ArrayList<>();
-            tags.add(TagEnum.ROMANCE.getTag());
-            sample1.setTags(tags);
+            sample1.setTags(TagEnum.ROMANCE.getTag());
             videoRepository.save(sample1);
         }
         else if (sample1.getDescription() == null) {
@@ -72,9 +70,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample2.setLink("http://157.245.155.41:8082/hls/sample2.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sample2.setThumbnail("https://i.imgur.com/ucKWSha.jpeg");
             sample2.setDescription("Short b-roll footage of some ocean animals");
-            List<String> tags = new ArrayList<>();
-            tags.add(TagEnum.FANTASY.getTag());
-            sample2.setTags(tags);
+            sample2.setTags(TagEnum.FANTASY.getTag());
             videoRepository.save(sample2);
         }
         else if (sample2.getDescription() == null) {
@@ -89,17 +85,75 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep1.setLink("http://157.245.155.41:8082/hls/SAO-ep1.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sao_ep1.setThumbnail("https://i.imgur.com/yhXzB7F.png");
             sao_ep1.setDescription("Sword Art Online... I didnt watch any episode yet...");
-            List<String> tags = new ArrayList<>();
-            tags.add(TagEnum.ROMANCE.getTag());
-            tags.add(TagEnum.ACTION.getTag());
-            tags.add(TagEnum.ANIME.getTag());
-            sao_ep1.setTags(tags);
+            sao_ep1.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
             videoRepository.save(sao_ep1);
         }
         else if (sao_ep1.getDescription() == null) {
             sao_ep1.setDescription("Sword Art Online... I didnt watch any episode yet...");
             videoRepository.save(sao_ep1);
         }
+        Video sao_ep2 = videoRepository.findFirstByFilename("SAO_ep2");
+        if (sao_ep2 == null) {
+            sao_ep2 = new Video();
+            sao_ep2.setFilename("SAO_ep2");
+            sao_ep2.setTitle("SAO_ep2");
+            sao_ep2.setLink("http://157.245.155.41:8082/hls/SAO_EP2.mp4/index.m3u8");
+            sao_ep2.setThumbnail("http://i.imgur.com/ewIVZWP.jpg");
+            sao_ep2.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            sao_ep2.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
+            videoRepository.save(sao_ep2);
+        }
+        else if (sao_ep2.getDescription() == null) {
+            sao_ep2.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            videoRepository.save(sao_ep2);
+        }
+        Video sao_ep3 = videoRepository.findFirstByFilename("SAO_ep3");
+        if (sao_ep3 == null) {
+            sao_ep3 = new Video();
+            sao_ep3.setFilename("SAO_ep3");
+            sao_ep3.setTitle("SAO_ep3");
+            sao_ep3.setLink("http://157.245.155.41:8082/hls/SAO_EP3.mp4/index.m3u8");
+            sao_ep3.setThumbnail("http://i.imgur.com/jsHSPjm.jpg");
+            sao_ep3.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            sao_ep3.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
+            videoRepository.save(sao_ep3);
+        }
+        else if (sao_ep3.getDescription() == null) {
+            sao_ep3.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            videoRepository.save(sao_ep3);
+        }
+        Video sao_ep4 = videoRepository.findFirstByFilename("SAO_ep4");
+        if (sao_ep4 == null) {
+            sao_ep4 = new Video();
+            sao_ep4.setFilename("SAO_ep4");
+            sao_ep4.setTitle("SAO_ep4");
+            sao_ep4.setLink("http://157.245.155.41:8082/hls/SAO_EP4.mp4/index.m3u8");
+            sao_ep4.setThumbnail("http://i.imgur.com/QV61yxz.jpg");
+            sao_ep4.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            sao_ep4.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
+            videoRepository.save(sao_ep4);
+        }
+        else if (sao_ep4.getDescription() == null) {
+            sao_ep4.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            videoRepository.save(sao_ep4);
+        }
+        Video sao_ep5 = videoRepository.findFirstByFilename("SAO_ep5");
+        if (sao_ep5 == null) {
+            sao_ep5 = new Video();
+            sao_ep5.setFilename("SAO_ep5");
+            sao_ep5.setTitle("SAO_ep5");
+            sao_ep5.setLink("http://157.245.155.41:8082/hls/SAO_EP5.mp4/index.m3u8");
+            sao_ep5.setThumbnail("http://i.imgur.com/vppqDCU.jpg");
+            sao_ep5.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            sao_ep5.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
+            videoRepository.save(sao_ep5);
+        }
+        else if (sao_ep5.getDescription() == null) {
+            sao_ep5.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            videoRepository.save(sao_ep5);
+        }
+
+
         Comment sample1_comment = commentRepository.findFirstByVideo_IdAndUser_IdAndTimestamp(1, 1, 0);
         if (sample1_comment == null) {
             sample1_comment = new Comment();

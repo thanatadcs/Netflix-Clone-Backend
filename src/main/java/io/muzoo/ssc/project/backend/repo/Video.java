@@ -29,8 +29,7 @@ public class Video {
 
     private String description;
 
-    @ElementCollection
-    private List<String> tags;
+    private String tags;
   
     @OneToMany(mappedBy = "user")
     Set<Timestamp> timestamps;

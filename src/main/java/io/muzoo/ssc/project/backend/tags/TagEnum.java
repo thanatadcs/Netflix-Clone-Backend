@@ -7,7 +7,7 @@ public enum TagEnum {
     FANTASY("Fantasy"),
     ANIME("Anime"),
     HORROR("Horror"),
-    MYSTERY("MYSTERY");
+    MYSTERY("Mystery");
 
     private String tag;
 
@@ -18,4 +18,5 @@ public enum TagEnum {
     public String getTag(){
         return tag;
     }
+
 }
