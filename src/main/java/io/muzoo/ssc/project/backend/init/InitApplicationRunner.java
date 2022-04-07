@@ -1,6 +1,7 @@
 package io.muzoo.ssc.project.backend.init;
 
 import io.muzoo.ssc.project.backend.repo.*;
+import io.muzoo.ssc.project.backend.tags.TagEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -54,6 +55,9 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample1.setLink("http://157.245.155.41:8082/hls/sample1.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sample1.setThumbnail("https://i.imgur.com/XJRowdx.png");
             sample1.setDescription("Short b-roll footage of animals in thier natural habitat");
+            List<String> tags = new ArrayList<>();
+            tags.add(TagEnum.ROMANCE.getTag());
+            sample1.setTags(tags);
             videoRepository.save(sample1);
         }
         else if (sample1.getDescription() == null) {
@@ -68,8 +72,10 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample2.setLink("http://157.245.155.41:8082/hls/sample2.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sample2.setThumbnail("https://i.imgur.com/ucKWSha.jpeg");
             sample2.setDescription("Short b-roll footage of some ocean animals");
+            List<String> tags = new ArrayList<>();
+            tags.add(TagEnum.FANTASY.getTag());
+            sample2.setTags(tags);
             videoRepository.save(sample2);
-        }
         else if (sample2.getDescription() == null) {
             sample2.setDescription("Short b-roll footage of some ocean animals");
             videoRepository.save(sample2);
@@ -82,6 +88,11 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep1.setLink("http://157.245.155.41:8082/hls/SAO-ep1.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sao_ep1.setThumbnail("https://i.imgur.com/yhXzB7F.png");
             sao_ep1.setDescription("Sword Art Online... I didnt watch any episode yet...");
+            List<String> tags = new ArrayList<>();
+            tags.add(TagEnum.ROMANCE.getTag());
+            tags.add(TagEnum.ACTION.getTag());
+            tags.add(TagEnum.ANIME.getTag());
+            sao_ep1.setTags(tags);
             videoRepository.save(sao_ep1);
         }
         else if (sao_ep1.getDescription() == null) {
@@ -89,7 +100,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             videoRepository.save(sao_ep1);
         }
         Comment sample1_comment = commentRepository.findFirstByVideo_IdAndUser_IdAndTimestamp(1, 1, 0);
-        if(sample1_comment == null){
+        if (sample1_comment == null) {
             sample1_comment = new Comment();
             sample1_comment.setVideo(videoRepository.findFirstByFilename("sample1"));
             sample1_comment.setUser(userRepository.findFirstByUsername("admin"));
@@ -106,7 +117,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             vidList.add("1");
             admin.setMylistvideo(vidList);
             userRepository.save(admin);
-        } else{
+        } else {
             List<String> vidList = new ArrayList<>();
             vidList.add("1");
             admin.setMylistvideo(vidList);

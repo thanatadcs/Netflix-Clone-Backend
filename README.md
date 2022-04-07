@@ -36,3 +36,8 @@ http://localhost:8082/hls/sample1.mp4/index.m3u8
 
 which required to set up nginx-vod on the same port and have same video name as mine. If you wish to use the video link from my server, you can simply run sql query on mariadb to change the link to
 the video link from my server. An even easier way to update is to just drop the tbl_video table and the rerun the code, the new table will be created and populated automatically for you (like magic).
+------------------------------------------------------
+Video Tag Update:
+For the video to have it's tag added in init data.
+You need to drop the login_webapp schema first.
+Then create login_webapp schema again, then run the backend again

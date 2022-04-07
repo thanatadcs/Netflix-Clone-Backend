@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -18,6 +20,10 @@ public class VideoDTO {
     private String link;
 
     private String thumbnail;
+
+    private String description;
+
+    private List<String> tags;
 
     private String title;
 
