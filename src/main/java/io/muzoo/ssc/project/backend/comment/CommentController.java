@@ -31,7 +31,7 @@ public class CommentController {
     private TimestampRepository timestampRepository;
 
 
-    @GetMapping("/api/videos/comment")
+    @PostMapping("/api/videos/comment")
     public List<CommentDTO> create(HttpServletRequest request) {
         long video_id = Long.parseLong(request.getParameter("videoId"));
         List<Comment> comments =  commentRepository.findAllByVideo_Id(video_id);
