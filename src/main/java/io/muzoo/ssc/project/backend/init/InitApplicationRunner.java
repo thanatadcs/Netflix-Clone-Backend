@@ -76,6 +76,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             tags.add(TagEnum.FANTASY.getTag());
             sample2.setTags(tags);
             videoRepository.save(sample2);
+        }
         else if (sample2.getDescription() == null) {
             sample2.setDescription("Short b-roll footage of some ocean animals");
             videoRepository.save(sample2);
