@@ -81,7 +81,7 @@ public class InitApplicationRunner implements ApplicationRunner {
         if (sao_ep1 == null) {
             sao_ep1 = new Video();
             sao_ep1.setFilename("SAO_ep1");
-            sao_ep1.setTitle("SAO_ep1");
+            sao_ep1.setTitle("Sword art online: Episode 1");
             sao_ep1.setLink("http://157.245.155.41:8082/hls/SAO-ep1.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sao_ep1.setThumbnail("https://i.imgur.com/yhXzB7F.png");
             sao_ep1.setDescription("Sword Art Online... I didnt watch any episode yet...");
@@ -96,7 +96,7 @@ public class InitApplicationRunner implements ApplicationRunner {
         if (sao_ep2 == null) {
             sao_ep2 = new Video();
             sao_ep2.setFilename("SAO_ep2");
-            sao_ep2.setTitle("SAO_ep2");
+            sao_ep2.setTitle("Sword art online: Episode 2");
             sao_ep2.setLink("http://157.245.155.41:8082/hls/SAO_EP2.mp4/index.m3u8");
             sao_ep2.setThumbnail("https://i.imgur.com/H37WZU7.png");
             sao_ep2.setDescription("Sword Art Online... I didnt watch any episode yet...");
@@ -111,7 +111,7 @@ public class InitApplicationRunner implements ApplicationRunner {
         if (sao_ep3 == null) {
             sao_ep3 = new Video();
             sao_ep3.setFilename("SAO_ep3");
-            sao_ep3.setTitle("SAO_ep3");
+            sao_ep3.setTitle("Sword art online: Episode 3");
             sao_ep3.setLink("http://157.245.155.41:8082/hls/SAO_EP3.mp4/index.m3u8");
             sao_ep3.setThumbnail("https://i.imgur.com/wlJtkcZ.png");
             sao_ep3.setDescription("Sword Art Online... I didnt watch any episode yet...");
@@ -126,7 +126,7 @@ public class InitApplicationRunner implements ApplicationRunner {
         if (sao_ep4 == null) {
             sao_ep4 = new Video();
             sao_ep4.setFilename("SAO_ep4");
-            sao_ep4.setTitle("SAO_ep4");
+            sao_ep4.setTitle("Sword art online: Episode 4");
             sao_ep4.setLink("http://157.245.155.41:8082/hls/SAO_EP4.mp4/index.m3u8");
             sao_ep4.setThumbnail("https://i.imgur.com/iKLU8BY.png");
             sao_ep4.setDescription("Sword Art Online... I didnt watch any episode yet...");
@@ -141,7 +141,7 @@ public class InitApplicationRunner implements ApplicationRunner {
         if (sao_ep5 == null) {
             sao_ep5 = new Video();
             sao_ep5.setFilename("SAO_ep5");
-            sao_ep5.setTitle("SAO_ep5");
+            sao_ep5.setTitle("Sword art online: Episode 5");
             sao_ep5.setLink("http://157.245.155.41:8082/hls/SAO_EP5.mp4/index.m3u8");
             sao_ep5.setThumbnail("https://cdn.discordapp.com/attachments/910547173844869133/961680315678609438/SAO_EP5_thumbnail.png");
             sao_ep5.setDescription("Sword Art Online... I didnt watch any episode yet...");
