@@ -7,7 +7,7 @@ public enum TagEnum {
     FANTASY("Fantasy"),
     ANIME("Anime"),
     HORROR("Horror"),
-    MYSTERY("MYSTERY");
+    MYSTERY("Mystery");
 
     private String tag;
 
