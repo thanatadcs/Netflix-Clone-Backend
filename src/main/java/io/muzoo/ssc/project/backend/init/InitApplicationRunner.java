@@ -152,6 +152,21 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep5.setDescription("Sword Art Online... I didnt watch any episode yet...");
             videoRepository.save(sao_ep5);
         }
+        Video saekano_mov = videoRepository.findFirstByFilename("saekano_mov");
+        if (saekano_mov == null) {
+            saekano_mov = new Video();
+            saekano_mov.setFilename("saekano_mov");
+            saekano_mov.setTitle("Saenai Heroine no Sodatekata Fine");
+            saekano_mov.setLink("http://157.245.155.41:8082/hls/Saekano-The-Movie.mp4/index.m3u8");
+            saekano_mov.setThumbnail("https://i.redd.it/l2f8xjbzt0w61.png");
+            saekano_mov.setDescription("Best girl");
+            saekano_mov.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ANIME.getTag() + ", " + TagEnum.DRAMA.getTag());
+            videoRepository.save(saekano_mov);
+        }
+        else if (saekano_mov.getDescription() == null) {
+            saekano_mov.setDescription("Best girl");
+            videoRepository.save(saekano_mov);
+        }
 
 
         Comment sample1_comment = commentRepository.findFirstByVideo_IdAndUser_IdAndTimestamp(1, 1, 0);
