@@ -63,7 +63,7 @@ public class CommentController {
         User user = userRepository.findFirstByUsername(username);
 
         // Find existing timestamp
-        Timestamp timestamp = timestampRepository.findFirstByUser_IdAndVideo_Id(video.getId(), user.getId());
+        Timestamp timestamp = timestampRepository.findFirstByUser_IdAndVideo_Id(user.getId(), video.getId());
 
         // Create new comment
         Comment comment = new Comment();
@@ -79,5 +79,8 @@ public class CommentController {
                         insertedComment, user.getUsername(), video.getFilename(), timestamp.getTimestamp()))
                 .build();
     }
+
+
+
 
 }

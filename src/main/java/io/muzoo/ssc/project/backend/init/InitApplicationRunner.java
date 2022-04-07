@@ -98,7 +98,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep2.setFilename("SAO_ep2");
             sao_ep2.setTitle("SAO_ep2");
             sao_ep2.setLink("http://157.245.155.41:8082/hls/SAO_EP2.mp4/index.m3u8");
-            sao_ep2.setThumbnail("http://i.imgur.com/ewIVZWP.jpg");
+            sao_ep2.setThumbnail("https://i.imgur.com/H37WZU7.png");
             sao_ep2.setDescription("Sword Art Online... I didnt watch any episode yet...");
             sao_ep2.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
             videoRepository.save(sao_ep2);
@@ -113,7 +113,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep3.setFilename("SAO_ep3");
             sao_ep3.setTitle("SAO_ep3");
             sao_ep3.setLink("http://157.245.155.41:8082/hls/SAO_EP3.mp4/index.m3u8");
-            sao_ep3.setThumbnail("http://i.imgur.com/jsHSPjm.jpg");
+            sao_ep3.setThumbnail("https://i.imgur.com/wlJtkcZ.png");
             sao_ep3.setDescription("Sword Art Online... I didnt watch any episode yet...");
             sao_ep3.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
             videoRepository.save(sao_ep3);
@@ -128,7 +128,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep4.setFilename("SAO_ep4");
             sao_ep4.setTitle("SAO_ep4");
             sao_ep4.setLink("http://157.245.155.41:8082/hls/SAO_EP4.mp4/index.m3u8");
-            sao_ep4.setThumbnail("http://i.imgur.com/QV61yxz.jpg");
+            sao_ep4.setThumbnail("https://i.imgur.com/iKLU8BY.png");
             sao_ep4.setDescription("Sword Art Online... I didnt watch any episode yet...");
             sao_ep4.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
             videoRepository.save(sao_ep4);
@@ -143,7 +143,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep5.setFilename("SAO_ep5");
             sao_ep5.setTitle("SAO_ep5");
             sao_ep5.setLink("http://157.245.155.41:8082/hls/SAO_EP5.mp4/index.m3u8");
-            sao_ep5.setThumbnail("http://i.imgur.com/vppqDCU.jpg");
+            sao_ep5.setThumbnail("https://cdn.discordapp.com/attachments/910547173844869133/961680315678609438/SAO_EP5_thumbnail.png");
             sao_ep5.setDescription("Sword Art Online... I didnt watch any episode yet...");
             sao_ep5.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
             videoRepository.save(sao_ep5);
