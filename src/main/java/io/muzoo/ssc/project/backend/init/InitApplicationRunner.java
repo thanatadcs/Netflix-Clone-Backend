@@ -1,6 +1,7 @@
 package io.muzoo.ssc.project.backend.init;
 
 import io.muzoo.ssc.project.backend.repo.*;
+import io.muzoo.ssc.project.backend.tags.TagEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -52,6 +53,9 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample1.setFilename("sample1");
             sample1.setTitle("AV (Animal Video)");
             sample1.setLink("http://157.245.155.41:8082/hls/sample1.mp4/index.m3u8"); // This link will work without installing nginx-vod
+            List<String> tags = new ArrayList<>();
+            tags.add(TagEnum.ROMANCE.getTag());
+            sample1.setTags(tags);
             sample1.setThumbnail("https://i.imgur.com/XJRowdx.png");
             videoRepository.save(sample1);
         }
@@ -61,6 +65,9 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample2.setFilename("sample2");
             sample2.setTitle("Ocean");
             sample2.setLink("http://157.245.155.41:8082/hls/sample2.mp4/index.m3u8"); // This link will work without installing nginx-vod
+            List<String> tags = new ArrayList<>();
+            tags.add(TagEnum.FANTASY.getTag());
+            sample2.setTags(tags);
             sample2.setThumbnail("https://i.imgur.com/ucKWSha.jpeg");
             videoRepository.save(sample2);
         }
@@ -70,6 +77,11 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep1.setFilename("SAO_ep1");
             sao_ep1.setTitle("SAO_ep1");
             sao_ep1.setLink("http://157.245.155.41:8082/hls/SAO-ep1.mp4/index.m3u8"); // This link will work without installing nginx-vod
+            List<String> tags = new ArrayList<>();
+            tags.add(TagEnum.ROMANCE.getTag());
+            tags.add(TagEnum.ACTION.getTag());
+            tags.add(TagEnum.ANIME.getTag());
+            sao_ep1.setTags(tags);
             sao_ep1.setThumbnail("https://i.imgur.com/yhXzB7F.png");
             videoRepository.save(sao_ep1);
         }

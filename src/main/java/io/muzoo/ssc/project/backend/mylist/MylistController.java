@@ -36,6 +36,7 @@ public class MylistController {
                     .filename(video.getFilename())
                     .link(video.getLink())
                     .thumbnail(video.getThumbnail())
+                    .tags(video.getTags())
                     .title(video.getTitle()).build());
         }
         return MylistDTO.builder().mylistvideo(videoList).build();
