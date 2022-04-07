@@ -55,9 +55,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample1.setLink("http://157.245.155.41:8082/hls/sample1.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sample1.setThumbnail("https://i.imgur.com/XJRowdx.png");
             sample1.setDescription("Short b-roll footage of animals in thier natural habitat");
-            List<String> tags = new ArrayList<>();
-            tags.add(TagEnum.ROMANCE.getTag());
-            sample1.setTags(tags);
+            sample1.setTags(TagEnum.ROMANCE.getTag());
             videoRepository.save(sample1);
         }
         else if (sample1.getDescription() == null) {
@@ -72,9 +70,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sample2.setLink("http://157.245.155.41:8082/hls/sample2.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sample2.setThumbnail("https://i.imgur.com/ucKWSha.jpeg");
             sample2.setDescription("Short b-roll footage of some ocean animals");
-            List<String> tags = new ArrayList<>();
-            tags.add(TagEnum.FANTASY.getTag());
-            sample2.setTags(tags);
+            sample2.setTags(TagEnum.FANTASY.getTag());
             videoRepository.save(sample2);
         }
         else if (sample2.getDescription() == null) {
@@ -89,11 +85,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             sao_ep1.setLink("http://157.245.155.41:8082/hls/SAO-ep1.mp4/index.m3u8"); // This link will work without installing nginx-vod
             sao_ep1.setThumbnail("https://i.imgur.com/yhXzB7F.png");
             sao_ep1.setDescription("Sword Art Online... I didnt watch any episode yet...");
-            List<String> tags = new ArrayList<>();
-            tags.add(TagEnum.ROMANCE.getTag());
-            tags.add(TagEnum.ACTION.getTag());
-            tags.add(TagEnum.ANIME.getTag());
-            sao_ep1.setTags(tags);
+            sao_ep1.setTags(TagEnum.ROMANCE.getTag() + ", " + TagEnum.ACTION.getTag() + ", " + TagEnum.ANIME.getTag());
             videoRepository.save(sao_ep1);
         }
         else if (sao_ep1.getDescription() == null) {
