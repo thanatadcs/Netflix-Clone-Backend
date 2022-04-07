@@ -82,4 +82,28 @@ public class UserController {
                     .build();
         }
     }
+
+    @PostMapping("/api/get/username")
+    public SimpleResponseDTO get(HttpServletRequest request) {
+        long userId = Long.parseLong(request.getParameter("userId"));
+
+        // All new user if username does not already exists
+        User user = userRepository.findFirstById(userId);
+        if(user == null){
+            return SimpleResponseDTO
+                    .builder()
+                    .success(false)
+                    .message("User doesn't exist")
+                    .build();
+        }
+        else{
+            return SimpleResponseDTO
+                    .builder()
+                    .success(true)
+                    .message(user.getUsername())
+                    .build();
+        }
+    }
+
+
 }
