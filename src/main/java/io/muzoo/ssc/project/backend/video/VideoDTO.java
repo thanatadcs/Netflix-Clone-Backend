@@ -26,4 +26,6 @@ public class VideoDTO {
     private List<String> tags;
 
     private String title;
+
+    private String description;
 }

@@ -59,7 +59,8 @@ public class InitApplicationRunner implements ApplicationRunner {
             tags.add(TagEnum.ROMANCE.getTag());
             sample1.setTags(tags);
             videoRepository.save(sample1);
-        } else if (sample1.getDescription() == null) {
+        }
+        else if (sample1.getDescription() == null) {
             sample1.setDescription("Short b-roll footage of animals in thier natural habitat");
             videoRepository.save(sample1);
         }
@@ -75,7 +76,7 @@ public class InitApplicationRunner implements ApplicationRunner {
             tags.add(TagEnum.FANTASY.getTag());
             sample2.setTags(tags);
             videoRepository.save(sample2);
-        } else if (sample2.getDescription() == null) {
+        else if (sample2.getDescription() == null) {
             sample2.setDescription("Short b-roll footage of some ocean animals");
             videoRepository.save(sample2);
         }
@@ -93,7 +94,8 @@ public class InitApplicationRunner implements ApplicationRunner {
             tags.add(TagEnum.ANIME.getTag());
             sao_ep1.setTags(tags);
             videoRepository.save(sao_ep1);
-        } else if (sao_ep1.getDescription() == null) {
+        }
+        else if (sao_ep1.getDescription() == null) {
             sao_ep1.setDescription("Sword Art Online... I didnt watch any episode yet...");
             videoRepository.save(sao_ep1);
         }

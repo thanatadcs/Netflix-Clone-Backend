@@ -28,11 +28,11 @@ public class TimestampController {
     @Transactional
     @PostMapping("/api/timestamp/update")
     public SimpleResponseDTO update(HttpServletRequest request) {
-        String filename = request.getParameter("filename");
+        long videoId = Long.parseLong(request.getParameter("videoId"));
         float updatedTimestamp = Float.parseFloat(request.getParameter("timestamp"));
 
         // Find video
-        Video video = videoRepository.findFirstByFilename(filename);
+        Video video = videoRepository.findFirstById(videoId);
 
         // Get user information
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -68,10 +68,10 @@ public class TimestampController {
 
     @PostMapping("/api/timestamp/get")
     public TimestampDTO get(HttpServletRequest request) {
-        String filename = request.getParameter("filename");
+        long videoId = Long.parseLong(request.getParameter("videoId"));
 
         // Find video
-        Video video = videoRepository.findFirstByFilename(filename);
+        Video video = videoRepository.findFirstById(videoId);
 
         // Get user information
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -31,7 +31,7 @@ public class Video {
 
     @ElementCollection
     private List<String> tags;
-
+  
     @OneToMany(mappedBy = "user")
     Set<Timestamp> timestamps;
 
