@@ -1,6 +1,8 @@
 package io.muzoo.ssc.project.backend.user;
 
 import io.muzoo.ssc.project.backend.SimpleResponseDTO;
+import io.muzoo.ssc.project.backend.repo.CommentRepository;
+import io.muzoo.ssc.project.backend.repo.TimestampRepository;
 import io.muzoo.ssc.project.backend.repo.User;
 import io.muzoo.ssc.project.backend.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,12 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private TimestampRepository timestampRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -61,6 +69,9 @@ public class UserController {
             if (principal != null && principal instanceof org.springframework.security.core.userdetails.User) {
                 request.logout();
                 String username = ((org.springframework.security.core.userdetails.User) principal).getUsername();
+                User user = userRepository.findFirstByUsername(username);
+                timestampRepository.deleteTimestampByUser_Id(user.getId());
+                commentRepository.deleteCommentByUser_Id(user.getId());
                 userRepository.deleteByUsername(username);
                 return SimpleResponseDTO
                         .builder()

@@ -2,6 +2,7 @@ package io.muzoo.ssc.project.backend.repo;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;

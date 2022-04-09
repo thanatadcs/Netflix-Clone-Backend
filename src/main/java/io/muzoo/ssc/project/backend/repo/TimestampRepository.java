@@ -14,6 +14,10 @@ public interface TimestampRepository extends JpaRepository<Timestamp, Long> {
     Timestamp findFirstByUser_IdAndVideo_Id(long user_id, long video_id);
 
     @Modifying(clearAutomatically = true)
+    @Query("DELETE FROM Timestamp WHERE user.id = :user_id")
+    int deleteTimestampByUser_Id(@Param(value = "user_id") long user_id);
+
+    @Modifying(clearAutomatically = true)
     @Query("UPDATE Timestamp SET timestamp = :timestamp where user.id = :user_id AND video.id = :video_id")
     int updateTimestampByUser_IdAndVideo_Id(@Param(value = "user_id") long user_id, @Param(value = "video_id") long video_id,@Param(value = "timestamp") float timestamp);
 }
